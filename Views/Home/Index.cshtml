@@ -1,3 +1,19 @@
 ﻿<div class="text-center">
-    <h1 class="display-4">திருக்குறள் பயில வருகை தந்தமைக்கு நன்றி</h1>
+    <h1 class="display-4"> வணக்கம் திருக்குறள் பயிலா வருகை தந்தமைக்கு</h1>
+    @{
+        string[] Kual = ViewBag.KuralCount;
+        var count = ViewBag.count;
+        for(int i = 0; i < count; i++)
+        {
+            if(Kual[i].ToString().Contains("1"))
+            {
+                <div>
+                    <p>@Kual[i+1]</p>
+                    <p>@Kual[i+2]</p>
+                    <p>@Kual[i+3]</p>
+                    <p>@Kual[i+4]</p>
+                </div>
+            }
+        }
+    }
 </div>
