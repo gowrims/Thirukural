@@ -15,10 +15,6 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        string FilePath = @"C:\Users\Gowrishankar\Documents\Program\ThirukuralinMVC\திருக்குறள்";
-        string[] KuralCount = System.IO.File.ReadAllLines(FilePath);
-        ViewBag.Kural = KuralCount;
-        ViewBag.count = KuralCount.Length;
         return View();
     }
 
