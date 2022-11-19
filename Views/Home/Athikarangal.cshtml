@@ -1,0 +1,23 @@
+<table class="table">
+    <thead>
+            <tr>
+                <th scope="col">வரிசை எண்</th>
+                <th scope="col">அதிகாரங்கள்</th>
+                <th scope="col">குறள்கள்</th>
+            </tr>
+    </thead>
+    @{
+        string[] Athikarangal = ViewBag.athirangal;
+    
+        for(int i = 1; i <= Athikarangal.Length; i++)
+        {
+            <tbody>
+                <tr>
+                    <th scope="row">@i</th>
+                    <td>@Athikarangal[i-1].ToString()</td>
+                    <td>குறள்கள்</td>
+                </tr>
+            </tbody>
+        }
+    }
+    </table>

@@ -1,14 +1,20 @@
 ﻿<div class="text-center">
     <h1 class="display-4"> வணக்கம் திருக்குறள் பயிலா வருகை தந்தமைக்கு</h1>
 </div>
-<div class="container">
-        <div class="panel panel-default">
-           <div class="panel-body">
-                <p><b>குறள் 1 :</b></p>
-                <p>அகர முதல எழுத்தெல்லாம் ஆதி</p>
-                <p>பகவன் முதற்றே உலகு.</p>
-                <p><b>விளக்கம் :</b></p>
-                <p>எழுத்துக்கள் எல்லாம் அகரத்தை அடிப்படையாக கொண்டிருக்கின்றன. அதுபோல உலகம் கடவுளை அடிப்படையாக கொண்டிருக்கிறது.</p>
-           </div> 
+@{
+    string[] FileLine = ViewBag.FileLine;
+    for(int i = 0; i < FileLine.Length; i+=5)
+    {
+        <div class="container-fluid">
+            <div class="panel   ">
+                <div class="panel-body">
+                    <h6><b>@FileLine[i].ToString()</b></h6>
+                    <p>@FileLine[i+1].ToString()</p>
+                    <p>@FileLine[i+2].ToString()</p>
+                    <p><b>@FileLine[i+3].ToString()</b></p>
+                    <p>@FileLine[i+4].ToString()</p>
+                </div> 
+            </div>
         </div>
-</div>
+    }
+}
