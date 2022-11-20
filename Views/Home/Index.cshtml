@@ -1,11 +1,11 @@
-﻿<div class="text-center">
-    <h1 class="display-4"> வணக்கம் திருக்குறள் பயிலா வருகை தந்தமைக்கு</h1>
+﻿<div class="container">
+    
 </div>
 @{
     string[] FileLine = ViewBag.FileLine;
     for(int i = 0; i < FileLine.Length; i+=5)
     {
-        <div class="container-fluid">
+        <div class="container border">
             <div class="panel   ">
                 <div class="panel-body">
                     <h6><b>@FileLine[i].ToString()</b></h6>
@@ -16,5 +16,6 @@
                 </div> 
             </div>
         </div>
+        <br>
     }
 }

@@ -7,17 +7,15 @@
             </tr>
     </thead>
     @{
-        string[] Athikarangal = ViewBag.athirangal;
+        string[] Athikarangal = ViewBag.ChapterLines;
     
         for(int i = 1; i <= Athikarangal.Length; i++)
         {
-            <tbody>
                 <tr>
                     <th scope="row">@i</th>
                     <td>@Athikarangal[i-1].ToString()</td>
                     <td>குறள்கள்</td>
                 </tr>
-            </tbody>
         }
     }
     </table>
