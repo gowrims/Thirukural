@@ -11,11 +11,15 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        string FilePath = System.IO.Path.Combine(Environment.ContentRootPath,"ThirukuralA2Z\\Thirukural\\கடவுள்_வாழ்த்து");
-        if (System.IO.File.Exists(FilePath) == true)
+        string[] FileList = System.IO.Directory.GetFiles(System.IO.Path.Combine(Environment.ContentRootPath,"ThirukuralA2Z\\Thirukural"));
+        foreach(string s in FileList)
         {
-            string[] FileLine = System.IO.File.ReadAllLines(FilePath);
-            ViewBag.FileLine = FileLine;
+            string FilePath = s;
+            if (System.IO.File.Exists(FilePath) == true)
+            {
+                string[] FileLine = System.IO.File.ReadAllLines(FilePath);
+                ViewBag.FileLine = FileLine;
+            }
         }
         return View();
     }
