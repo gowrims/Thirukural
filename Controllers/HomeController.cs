@@ -6,11 +6,18 @@ namespace ThirukuralinMVC.Controllers;
 public class HomeController : Controller
 {
     private IWebHostEnvironment Environment {get; set;}
-
+    
     public HomeController(IWebHostEnvironment _environment) => Environment = _environment;
 
     public IActionResult Index()
     {
+        string ChapterPath = System.IO.Path.Combine(Environment.ContentRootPath,"ThirukuralA2Z\\chapters.txt");
+        if(System.IO.File.Exists(ChapterPath))
+        {
+            string[] ChapterLines = System.IO.File.ReadAllLines(ChapterPath);
+            ViewBag.ChapterLines = ChapterLines;
+        }
+
         string[] FileList = System.IO.Directory.GetFiles(System.IO.Path.Combine(Environment.ContentRootPath,"ThirukuralA2Z\\Thirukural"));
         foreach(string s in FileList)
         {
@@ -36,7 +43,7 @@ public class HomeController : Controller
         {
             string[] ChapterLines = System.IO.File.ReadAllLines(ChapterPath);
             ViewBag.ChapterLines = ChapterLines;
-        }
+        }   
         return View();
     }
 
