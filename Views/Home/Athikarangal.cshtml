@@ -1,3 +1,4 @@
+
 <table class="table">
     <thead>
             <tr>
@@ -6,7 +7,8 @@
                 <th scope="col">குறள்கள்</th>
             </tr>
     </thead>
-    @{
+    @using (Html.BeginForm("Index","Home",FormMethod.post))
+    {
         string[] Athikarangal = ViewBag.ChapterLines;
     
         for(int i = 1; i <= Athikarangal.Length; i++)

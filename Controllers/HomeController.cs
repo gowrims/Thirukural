@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using ThirukuralinMVC.Models;
 namespace ThirukuralinMVC.Controllers;
@@ -9,8 +10,9 @@ public class HomeController : Controller
     
     public HomeController(IWebHostEnvironment _environment) => Environment = _environment;
 
-    public IActionResult Index()
+    public IActionResult Index(int x)
     {
+        
         string ChapterPath = System.IO.Path.Combine(Environment.ContentRootPath,"ThirukuralA2Z\\chapters.txt");
         if(System.IO.File.Exists(ChapterPath))
         {
@@ -38,12 +40,21 @@ public class HomeController : Controller
 
     public IActionResult Athikarangal()
     {
-        string ChapterPath = System.IO.Path.Combine(Environment.ContentRootPath,"ThirukuralA2Z\\chapters.txt");
-        if(System.IO.File.Exists(ChapterPath))
+        try
         {
-            string[] ChapterLines = System.IO.File.ReadAllLines(ChapterPath);
-            ViewBag.ChapterLines = ChapterLines;
-        }   
+            string ChapterPath = System.IO.Path.Combine(Environment.ContentRootPath,"ThirukuralA2Z\\chapters.txt");
+            if(System.IO.File.Exists(ChapterPath))
+            {
+                string[] ChapterLines = System.IO.File.ReadAllLines(ChapterPath);
+                ViewBag.ChapterLines = ChapterLines;
+            }   
+
+            // return RedirectToAction("Index",new {x = });
+        }
+        catch(Exception ex)
+        {
+            
+        }
         return View();
     }
 
