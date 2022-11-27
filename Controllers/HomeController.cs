@@ -21,15 +21,28 @@ public class HomeController : Controller
         }
 
         string[] FileList = System.IO.Directory.GetFiles(System.IO.Path.Combine(Environment.ContentRootPath,"ThirukuralA2Z\\Thirukural"));
-        foreach(string s in FileList)
+        for(int i = 0; i < FileList.Length; i++)
         {
-            string FilePath = s;
-            if (System.IO.File.Exists(FilePath) == true)
+            foreach(string s in FileList)
             {
+            
+                string FilePath = s;
+                if (System.IO.File.Exists(FilePath) == true)
+                {
+                    string[] FileLine = System.IO.File.ReadAllLines(FilePath);
+                    ViewBag.FileLine = FileLine;
+                }
+            }
+            
+            int j = i+1;
+            if(x == j)
+            {
+                string FilePath = FileList[i];
                 string[] FileLine = System.IO.File.ReadAllLines(FilePath);
                 ViewBag.FileLine = FileLine;
             }
         }
+        
         return View();
     }
 
@@ -49,7 +62,6 @@ public class HomeController : Controller
                 ViewBag.ChapterLines = ChapterLines;
             }   
 
-            // return RedirectToAction("Index",new {x = });
         }
         catch(Exception ex)
         {
