@@ -25,7 +25,6 @@ public class HomeController : Controller
         {
             foreach(string s in FileList)
             {
-            
                 string FilePath = s;
                 if (System.IO.File.Exists(FilePath) == true)
                 {
@@ -34,13 +33,13 @@ public class HomeController : Controller
                 }
             }
             
-            int j = i+1;
-            if(x == j)
-            {
-                string FilePath = FileList[i];
-                string[] FileLine = System.IO.File.ReadAllLines(FilePath);
-                ViewBag.FileLine = FileLine;
-            }
+            // int j = i+1;
+            // if(x == j)
+            // {
+            //     string FilePath = FileList[i];
+            //     string[] FileLine = System.IO.File.ReadAllLines(FilePath);
+            //     ViewBag.FileLine = FileLine;
+            // }
         }
         
         return View();
@@ -53,20 +52,12 @@ public class HomeController : Controller
 
     public IActionResult Athikarangal()
     {
-        try
+        string ChapterPath = System.IO.Path.Combine(Environment.ContentRootPath,"ThirukuralA2Z\\chapters.txt");
+        if(System.IO.File.Exists(ChapterPath))
         {
-            string ChapterPath = System.IO.Path.Combine(Environment.ContentRootPath,"ThirukuralA2Z\\chapters.txt");
-            if(System.IO.File.Exists(ChapterPath))
-            {
-                string[] ChapterLines = System.IO.File.ReadAllLines(ChapterPath);
-                ViewBag.ChapterLines = ChapterLines;
-            }   
-
-        }
-        catch(Exception ex)
-        {
-            
-        }
+            string[] ChapterLines = System.IO.File.ReadAllLines(ChapterPath);
+            ViewBag.ChapterLines = ChapterLines;
+        }  
         return View();
     }
 
