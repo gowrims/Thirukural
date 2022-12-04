@@ -50,14 +50,57 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult Athikarangal()
+    public IActionResult Athikarangal(int y = 0)
     {
+        string[] FirstChapter = new string[38];
+        string[] SecoundChapter = new string[70];
+        string[] thirdChapter = new string[25];
         string ChapterPath = System.IO.Path.Combine(Environment.ContentRootPath,"ThirukuralA2Z\\chapters.txt");
         if(System.IO.File.Exists(ChapterPath))
         {
             string[] ChapterLines = System.IO.File.ReadAllLines(ChapterPath);
-            ViewBag.ChapterLines = ChapterLines;
+            if(y == 0)
+            {
+                ViewBag.ChapterLines = ChapterLines;
+            }
+            else if(y == 1)
+            {
+                for(int i = 0; i <= 37; i++)
+                {
+                    FirstChapter.SetValue(ChapterLines[i],i);   
+                }
+                ViewBag.ChapterLines = 0;
+                ViewBag.FirstChapter = FirstChapter;
+                ViewBag.SecoundChapter = 0;
+                ViewBag.thirdChapter = 0; 
+            }
+            else if(y == 2)
+            {
+                for(int i = 0; i <= 69; i++)
+                {
+                    int j = 38 + i;
+                    SecoundChapter.SetValue(ChapterLines[j],i);                      
+                }
+                ViewBag.ChapterLines = 0;
+                ViewBag.FirstChapter = 0;
+                ViewBag.SecoundChapter = SecoundChapter;
+                ViewBag.thirdChapter = 0; 
+            }
+            else if(y == 3)
+            {
+                for(int i = 0; i <= 24; i++)
+                {
+                    int j = 109 + i;
+                    thirdChapter.SetValue(ChapterLines[j],i);  
+                }
+                ViewBag.ChapterLines = 0;
+                ViewBag.FirstChapter = 0;
+                ViewBag.SecoundChapter = 0;
+                ViewBag.thirdChapter = thirdChapter;  
+            }
         }  
+
+        
         return View();
     }
 

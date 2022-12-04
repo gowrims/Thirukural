@@ -8,15 +8,58 @@
             </tr>
     </thead>
     @{
-        string[] Athikarangal = ViewBag.ChapterLines;
-    
-        for(int i = 1; i <= Athikarangal.Length; i++)
+        if(ViewBag.ChapterLines != 0)
         {
-            <tr>
-                <th scope="row">@i</th>
-                <td>@Athikarangal[i-1].ToString()</td>
-                <td><a href="/Home/Index?@i">குறள்கள்</a></td>
-            </tr>
+            string[] Athikarangal = ViewBag.ChapterLines;
+    
+            for(int i = 1; i <= Athikarangal.Length; i++)
+            {
+                <tr>
+                    <th scope="row">@i</th>
+                    <td>@Athikarangal[i-1].ToString()</td>
+                    <td><a href="/Home/Index?@i">குறள்கள்</a></td>
+                </tr>
+            }
         }
+        if(ViewBag.FirstChapter != 0)
+        {
+            string[] Athikarangal = ViewBag.FirstChapter;
+
+            for(int i = 1; i <= Athikarangal.Length; i++)
+            {
+                <tr>
+                    <th scope="row">@i</th>
+                    <td>@Athikarangal[i-1].ToString()</td>
+                    <td><a href="/Home/Index?@i">குறள்கள்</a></td>
+                </tr>
+            }
+        }
+        if(ViewBag.SecoundChapter != 0)
+        {
+            string[] Athikarangal = ViewBag.SecoundChapter;
+    
+            for(int i = 1; i <= Athikarangal.Length; i++)
+            {
+                <tr>
+                    <th scope="row">@i</th>
+                    <td>@Athikarangal[i-1].ToString()</td>
+                    <td><a href="/Home/Index?@i">குறள்கள்</a></td>
+                </tr>
+            }
+        }
+        if(ViewBag.thirdChapter != 0)
+        {
+            string[] Athikarangal = ViewBag.thirdChapter;
+    
+            for(int i = 1; i <= Athikarangal.Length; i++)
+            {
+                <tr>
+                    <th scope="row">@i</th>
+                    <td>@Athikarangal[i-1].ToString()</td>
+                    <td><a href="/Home/Index?@i">குறள்கள்</a></td>
+                </tr>
+            }
+        }
+        
     }
     </table>
