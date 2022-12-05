@@ -50,7 +50,7 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult Athikarangal(int y = 0)
+    public IActionResult Athikarangal(string name = " ",int y=0)
     {
         string[] FirstChapter = new string[38];
         string[] SecoundChapter = new string[70];
@@ -59,9 +59,10 @@ public class HomeController : Controller
         if(System.IO.File.Exists(ChapterPath))
         {
             string[] ChapterLines = System.IO.File.ReadAllLines(ChapterPath);
+            var x = new List<string>(); 
             if(y == 0)
             {
-                ViewBag.ChapterLines = ChapterLines;
+                x = ChapterLines.ToList();
             }
             else if(y == 1)
             {
@@ -69,10 +70,7 @@ public class HomeController : Controller
                 {
                     FirstChapter.SetValue(ChapterLines[i],i);   
                 }
-                ViewBag.ChapterLines = 0;
-                ViewBag.FirstChapter = FirstChapter;
-                ViewBag.SecoundChapter = 0;
-                ViewBag.thirdChapter = 0; 
+                x = FirstChapter.ToList();
             }
             else if(y == 2)
             {
@@ -81,23 +79,19 @@ public class HomeController : Controller
                     int j = 38 + i;
                     SecoundChapter.SetValue(ChapterLines[j],i);                      
                 }
-                ViewBag.ChapterLines = 0;
-                ViewBag.FirstChapter = 0;
-                ViewBag.SecoundChapter = SecoundChapter;
-                ViewBag.thirdChapter = 0; 
+                x = SecoundChapter.ToList();
             }
             else if(y == 3)
             {
                 for(int i = 0; i <= 24; i++)
                 {
-                    int j = 109 + i;
+                    int j = 108 + i;
                     thirdChapter.SetValue(ChapterLines[j],i);  
                 }
-                ViewBag.ChapterLines = 0;
-                ViewBag.FirstChapter = 0;
-                ViewBag.SecoundChapter = 0;
-                ViewBag.thirdChapter = thirdChapter;  
+                x = thirdChapter.ToList();  
             }
+            ViewBag.name = name;
+            ViewBag.x = x;
         }  
 
         

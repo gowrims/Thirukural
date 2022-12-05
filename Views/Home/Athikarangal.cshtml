@@ -1,65 +1,26 @@
 
 <table class="table">
-    <thead>
-            <tr>
-                <th scope="col">வரிசை எண்</th>
-                <th scope="col">அதிகாரங்கள்</th>
-                <th scope="col">குறள்கள்</th>
-            </tr>
-    </thead>
     @{
-        if(ViewBag.ChapterLines != 0)
-        {
-            string[] Athikarangal = ViewBag.ChapterLines;
+        string name = ViewBag.name;
+        <thead>
+            <tr>@name</tr>
+                <tr>
+                    <th scope="col">வரிசை எண்</th>
+                    <th scope="col">அதிகாரங்கள்</th>
+                    <th scope="col">குறள்கள்</th>
+                </tr>
+        </thead>
     
-            for(int i = 1; i <= Athikarangal.Length; i++)
-            {
-                <tr>
-                    <th scope="row">@i</th>
-                    <td>@Athikarangal[i-1].ToString()</td>
-                    <td><a href="/Home/Index?@i">குறள்கள்</a></td>
-                </tr>
-            }
-        }
-        if(ViewBag.FirstChapter != 0)
-        {
-            string[] Athikarangal = ViewBag.FirstChapter;
-
-            for(int i = 1; i <= Athikarangal.Length; i++)
-            {
-                <tr>
-                    <th scope="row">@i</th>
-                    <td>@Athikarangal[i-1].ToString()</td>
-                    <td><a href="/Home/Index?@i">குறள்கள்</a></td>
-                </tr>
-            }
-        }
-        if(ViewBag.SecoundChapter != 0)
-        {
-            string[] Athikarangal = ViewBag.SecoundChapter;
-    
-            for(int i = 1; i <= Athikarangal.Length; i++)
-            {
-                <tr>
-                    <th scope="row">@i</th>
-                    <td>@Athikarangal[i-1].ToString()</td>
-                    <td><a href="/Home/Index?@i">குறள்கள்</a></td>
-                </tr>
-            }
-        }
-        if(ViewBag.thirdChapter != 0)
-        {
-            string[] Athikarangal = ViewBag.thirdChapter;
-    
-            for(int i = 1; i <= Athikarangal.Length; i++)
-            {
-                <tr>
-                    <th scope="row">@i</th>
-                    <td>@Athikarangal[i-1].ToString()</td>
-                    <td><a href="/Home/Index?@i">குறள்கள்</a></td>
-                </tr>
-            }
-        }
         
+        System.Collections.Generic.List<string> Athikarangal = ViewBag.x;
+            
+            for(int i = 1; i <= Athikarangal.Count; i++)
+            {
+                <tr>
+                    <th scope="row">@i</th>
+                    <td>@Athikarangal[i-1].ToString()</td>
+                    <td><a href="/Home/Index?@i">குறள்கள்</a></td>
+                </tr>
+            }        
     }
     </table>
