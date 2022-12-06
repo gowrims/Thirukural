@@ -23,23 +23,14 @@ public class HomeController : Controller
         string[] FileList = System.IO.Directory.GetFiles(System.IO.Path.Combine(Environment.ContentRootPath,"ThirukuralA2Z\\Thirukural"));
         for(int i = 0; i < FileList.Length; i++)
         {
-            foreach(string s in FileList)
+            if(x == i)
             {
-                string FilePath = s;
-                if (System.IO.File.Exists(FilePath) == true)
+                if (System.IO.File.Exists(FileList[i]) == true)
                 {
-                    string[] FileLine = System.IO.File.ReadAllLines(FilePath);
+                    string[] FileLine = System.IO.File.ReadAllLines(FileList[i]);
                     ViewBag.FileLine = FileLine;
                 }
             }
-            
-            // int j = i+1;
-            // if(x == j)
-            // {
-            //     string FilePath = FileList[i];
-            //     string[] FileLine = System.IO.File.ReadAllLines(FilePath);
-            //     ViewBag.FileLine = FileLine;
-            // }
         }
         
         return View();
