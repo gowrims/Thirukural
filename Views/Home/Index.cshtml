@@ -1,7 +1,12 @@
 ﻿<div class="container">
    @* <nav aria-label="Page navigation example "> *@
   <ul class="pagination-sm pagination ng-isolate-scope ng-valid">
+    @@functions {
+        
+    }
+
     @{
+
         string[] ChapterLines = ViewBag.ChapterLines;
         <li class="page-item"><a class="page-link" href="/Home/Index?x=0">⏮</a></li>
         <li class="page-item"><a class="page-link" href="/Home/Index?x=0">◀</a></li>
@@ -10,8 +15,8 @@
             int num = i + 1;
             <li class="page-item"><a class="page-link" href="/Home/Index?x=@i">@num</a></li>
         }
-        <li class="page-item"><a class="page-link" href="/Home/Index?x=@ChapterLines.Length">▶</a></li>
-        <li class="page-item"><a class="page-link" href="/Home/Index?x=0">⏭</a></li>
+        <li class="page-item"><a class="page-link" href="/Home/Index?x=">▶</a></li>
+        <li class="page-item"><a class="page-link" href="/Home/Index?x=@ChapterLines.Length">⏭</a></li>
     }
   </ul>
 </nav>
